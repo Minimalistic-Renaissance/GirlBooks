@@ -8,6 +8,7 @@ Has the following concepts :
 * has_many belongs_to relationships.
 * sqlite usage.
 * Twitter Bootstrap implementation.
+* simple_form usage.
 * DataTables Implementation.
 * bootstrap_and_overrides implementation.
 
