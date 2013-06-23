@@ -1,0 +1,45 @@
+<%- model_class = Girl -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:age) %></th>
+      <th><%= model_class.human_attribute_name(:bio) %></th>
+      <th>Buy</th>
+      <th>Display</th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @girls.each do |girl| %>
+      <tr>
+        <td><%= girl.name %></td>
+        <td><%= girl.age %></td>
+        <td><%= girl.bio %></td>
+        <td><%= link_to "Procure A New Book",
+            new_book_url(:id => girl.id),
+            :class => 'btn btn-mini btn-success',:id => 'addnew' %></td>
+        <td><%= link_to "Show Procured Books",
+              books_path(:girl_id=>girl.id), :class => 'btn btn-mini btn-success' , :id => 'submitco' %></td>            
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_girl_path(girl), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      girl_path(girl),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Add A New Girl",
+            new_girl_path,
+            :class => 'btn btn-primary' %>
+
+

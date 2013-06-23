@@ -1,0 +1,10 @@
+<%= simple_form_for @girl, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :age %>
+  <%= f.input :bio %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                girls_path, :class => 'btn' %>
+  </div>
+<% end %>
